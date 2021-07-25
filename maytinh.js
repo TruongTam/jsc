@@ -1,3 +1,21 @@
+var i=0;
+const arr= [];
+let modalBtn = document.getElementById("popup-btn");
+let modal = document.querySelector(".popup");
+let closeBtn = document.querySelector(".close-btn");
+modalBtn.onclick = function(){
+modal.style.display = "block"
+}
+
+closeBtn.onclick = function(){
+modal.style.display = "none"
+}
+
+window.onclick = function(e){
+if(e.target == popup){
+modal.style.display = "none"
+}
+}
 function Lay_gia_tri_cu(){
     return document.getElementById("gia_tri_cu").innerText;
 }
@@ -31,7 +49,6 @@ function Xoa_Dinh_dang_chuoi(so) {
     return Number(so.replace(/,/g, ''))
 } 
 
-
 var he_thong = document.getElementsByClassName('he_thong');
 for(var i=0; i < he_thong.length; i++) {
     he_thong[i].addEventListener('click', function() {
@@ -54,6 +71,7 @@ for(var i=0; i < he_thong.length; i++) {
                 ket_qua_cu =ket_qua_cu + ket_qua;
                 if(this.id == "=") {
                     var ket_qua_cuoi = eval(ket_qua_cu);
+                    arr.push(ket_qua_cuoi);
                     In_Ket_qua(ket_qua_cuoi)
                     In_gia_tri_cu("")
                 } else {
@@ -62,10 +80,43 @@ for(var i=0; i < he_thong.length; i++) {
                     In_Ket_qua("")
                 }
             }
+            
+        
         }
-    })
+        
+    });
 }
-
+var c2=document.getElementById("^2");
+c2.onclick=function(){
+    var so= parseFloat(document.getElementById("gia_tri_xuat").innerText);
+    document.getElementById("gia_tri_cu").innerText=so+"^2";
+    document.getElementById("gia_tri_xuat").innerText=so*so;
+    
+    
+}
+var c3=document.getElementById("^3");
+c3.onclick=function(){
+    var so= parseFloat(document.getElementById("gia_tri_xuat").innerText);
+    document.getElementById("gia_tri_cu").innerText=so+"^3";
+    document.getElementById("gia_tri_xuat").innerText=so**so;
+}
+var c4=document.getElementById("can");
+c4.onclick=function(){
+    var so= parseFloat(document.getElementById("gia_tri_xuat").innerText);
+    document.getElementById("gia_tri_cu").innerText="sqrt("+so+")";
+    document.getElementById("gia_tri_xuat").innerText=Math.sqrt(so);
+    //Xoa_Dinh_dang_chuoi(Lay_ket_qua());
+    
+}
+var c5=document.getElementById("cu");
+c5.onclick=function(){
+    //var so= parseFloat(document.getElementById("gia_tri_xuat").innerText);
+   // document.getElementById("gia_tri_cu").innerText=so+"^2";
+   var x=document.getElementById("gia_tri_xuat");
+    x.innerText=arr[i];
+    i++;
+    
+}
 var con_so = document.getElementsByClassName('con_so');
 for(var i=0; i < con_so.length; i++) {
     con_so[i].addEventListener('click', function() {
